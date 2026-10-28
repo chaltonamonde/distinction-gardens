@@ -99,14 +99,14 @@
   <!-- ======================================================================
        MAIN CONTENT: 404 ERROR
        ====================================================================== -->
-  <main style="flex-grow: 1; display: flex; align-items: center; padding: 10rem 0 6rem 0;">
+  <main class="page-404-main">
     <div class="container" style="text-align: center; max-width: 680px;">
       <span class="subheading fade-up">404 Error</span>
-      <h1 class="fade-up" style="font-size: clamp(3rem, 7vw, 5.5rem); color: var(--color-gold); margin-bottom: 0.5rem;">Page Not Found</h1>
+      <h1 class="fade-up" style="font-size: clamp(2.5rem, 7vw, 5rem); color: var(--color-gold); margin-bottom: 0.5rem;">Page Not Found</h1>
       <div class="gold-divider"></div>
       <p class="lead-text fade-up" style="margin-bottom: 2rem;">It seems you have wandered off the garden path. The page you requested is not available, but our hospitality awaits you just around the corner.</p>
       
-      <div class="fade-up" style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 3rem;">
+      <div class="fade-up error-actions">
         <a href="index.html" class="btn btn-gold">Return to Homepage</a>
         <a href="rooms.html" class="btn btn-outline">Explore Rooms</a>
         <a href="contact.html" class="btn btn-green">Contact Concierge</a>
@@ -176,6 +176,13 @@
   <a href="https://wa.me/254725111888?text=Hello%20Distinction%20Gardens,%20I%20have%20an%20inquiry" class="floating-whatsapp" target="_blank" rel="noopener" aria-label="WhatsApp Concierge">
     <svg viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.592 2.654-.696c1.004.577 1.76.885 2.806.885 3.181 0 5.767-2.586 5.767-5.766 0-3.18-2.586-5.768-5.767-5.768zm0 10.155c-.93 0-1.637-.266-2.438-.742l-.174-.103-1.808.474.483-1.761-.114-.182c-.524-.834-.84-1.579-.84-2.275 0-2.434 1.98-4.414 4.414-4.414 2.433 0 4.413 1.98 4.413 4.414 0 2.434-1.98 4.414-4.414 4.414z"/></svg>
   </a>
+
+  <div class="mobile-action-bar">
+    <div class="mobile-action-inner">
+      <a href="tel:+254725111888" class="mobile-action-btn mobile-call-btn">Call Desk</a>
+      <a href="https://wa.me/254725111888?text=Hello%20Distinction%20Gardens,%20I%20have%20an%20inquiry" class="mobile-action-btn mobile-wa-btn" target="_blank" rel="noopener">WhatsApp</a>
+    </div>
+  </div>
 
   <script src="js/config.js"></script>
   <script src="js/main.js"></script>
