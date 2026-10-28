@@ -1,6 +1,7 @@
 /* ==========================================================================
    DISTINCTION GARDENS — LUXURY RESORT STYLESHEET
-   Palette: Cream (#FBF7EE), Gold (#C9962B), Deep Green (#1B5E3B), Dark Text (#1F2A24)
+   Palette: Luminous Cream (#FAF4EB), Radiant Gold (#C9962B),
+            Velvety Dark Cream-Brown (#1C1613), Warm Roasted Mocha (#241C18)
    Typography: Cormorant Garamond (Headings), Jost / Inter (Body)
    ========================================================================== */
 
@@ -8,39 +9,51 @@
    1. CSS Custom Properties / Design Tokens
    -------------------------------------------------------------------------- */
 :root {
-  --color-cream: #FBF7EE;
+  /* Cream Tones (Text, Highlights, Luminous Accents) */
+  --color-cream: #FAF4EB;
   --color-cream-light: #FFFFFF;
-  --color-cream-alt: #F3ECE0;
-  --color-cream-dark: #EADFCF;
+  --color-cream-alt: #EEDFCF;
+  --color-cream-dark: #D4C2B0;
   
+  /* Signature Gold Accents */
   --color-gold: #C9962B;
-  --color-gold-hover: #AF7F1E;
-  --color-gold-light: #DFB253;
-  --color-gold-tint: rgba(201, 150, 43, 0.12);
-  --color-gold-border: rgba(201, 150, 43, 0.35);
+  --color-gold-hover: #DFB253;
+  --color-gold-light: #EAC268;
+  --color-gold-tint: rgba(201, 150, 43, 0.15);
+  --color-gold-border: rgba(201, 150, 43, 0.38);
 
-  --color-green: #1B5E3B;
-  --color-green-dark: #0E3621;
-  --color-green-deep: #082114;
-  --color-green-light: #2A8253;
-  --color-green-tint: rgba(27, 94, 59, 0.08);
+  /* "Cream Brown & A Little Bit Dark" Luxury Resort Palette */
+  --color-brown-base: #1C1613;          /* Warm dark espresso cream-brown base */
+  --color-brown-surface: #241C18;       /* Warm roasted mocha card & section background */
+  --color-brown-surface-elevated: #2E231E; /* Elevated card hover & active console */
+  --color-brown-deep: #130E0C;          /* Deepest dark cacao */
+  --color-brown-light: #3D2F28;         /* Subtle warm taupe border/divider */
+  --color-brown-tint: rgba(201, 150, 43, 0.08);
 
-  --color-text: #1F2A24;
-  --color-text-muted: #57655D;
-  --color-text-light: #8E9B93;
-  --color-text-inverse: #FBF7EE;
+  /* Backward Compatibility Aliases */
+  --color-green: #C9962B;
+  --color-green-dark: #241C18;
+  --color-green-deep: #130E0C;
+  --color-green-light: #DFB253;
+  --color-green-tint: rgba(201, 150, 43, 0.12);
+
+  /* Warm Cream & Cashmere Text Contrast */
+  --color-text: #F0E6DA;
+  --color-text-muted: #BCABA0;
+  --color-text-light: #8E7C71;
+  --color-text-inverse: #1C1613;
 
   --font-serif: 'Cormorant Garamond', Garamond, 'Times New Roman', serif;
   --font-sans: 'Jost', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 
-  --shadow-sm: 0 2px 8px rgba(15, 55, 34, 0.06);
-  --shadow-md: 0 8px 24px rgba(15, 55, 34, 0.09);
-  --shadow-lg: 0 16px 40px rgba(15, 55, 34, 0.14);
-  --shadow-gold: 0 8px 24px rgba(201, 150, 43, 0.28);
+  --shadow-sm: 0 4px 14px rgba(0, 0, 0, 0.35);
+  --shadow-md: 0 10px 28px rgba(0, 0, 0, 0.45);
+  --shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.65);
+  --shadow-gold: 0 8px 24px rgba(201, 150, 43, 0.32);
 
-  --radius-sm: 4px;
-  --radius-md: 8px;
-  --radius-lg: 16px;
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
   --radius-full: 9999px;
 
   --transition-fast: 0.2s cubic-bezier(0.16, 1, 0.3, 1);
@@ -56,12 +69,12 @@
   --nav-height-scrolled: 56px;
   --nav-radius: 9999px;
   --nav-max-width: 1200px;
-  --nav-bg-initial: rgba(10, 38, 24, 0.48);
-  --nav-bg-scrolled: rgba(10, 38, 24, 0.88);
+  --nav-bg-initial: rgba(28, 22, 18, 0.62);
+  --nav-bg-scrolled: rgba(20, 15, 12, 0.94);
   --nav-blur: 16px;
-  --nav-border-initial: rgba(201, 150, 43, 0.28);
-  --nav-border-scrolled: rgba(201, 150, 43, 0.45);
-  --nav-glow: 0 10px 30px -8px rgba(0, 0, 0, 0.45), 0 0 16px rgba(201, 150, 43, 0.12);
+  --nav-border-initial: rgba(201, 150, 43, 0.3);
+  --nav-border-scrolled: rgba(201, 150, 43, 0.48);
+  --nav-glow: 0 10px 30px -8px rgba(0, 0, 0, 0.7), 0 0 20px rgba(201, 150, 43, 0.15);
   --nav-transition: 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -91,7 +104,7 @@ html {
 body {
   font-family: var(--font-sans);
   color: var(--color-text);
-  background-color: var(--color-cream);
+  background-color: var(--color-brown-base);
   line-height: 1.65;
   font-weight: 400;
   overflow-x: hidden;
@@ -142,7 +155,7 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-serif);
   font-weight: 600;
   line-height: 1.18;
-  color: var(--color-text);
+  color: var(--color-cream);
   letter-spacing: -0.01em;
 }
 
@@ -152,7 +165,7 @@ h3 { font-size: clamp(1.4rem, 2.4vw, 1.95rem); }
 h4 { font-size: 1.25rem; }
 
 .heading-inverse {
-  color: var(--color-text-inverse);
+  color: var(--color-cream);
 }
 
 .subheading {
@@ -162,7 +175,7 @@ h4 { font-size: 1.25rem; }
   letter-spacing: 0.22em;
   text-transform: uppercase;
   font-weight: 600;
-  color: var(--color-gold);
+  color: var(--color-gold-light);
   margin-bottom: 0.65rem;
 }
 
@@ -173,7 +186,7 @@ h4 { font-size: 1.25rem; }
 .lead-text {
   font-size: 1.15rem;
   line-height: 1.7;
-  color: var(--color-text-muted);
+  color: var(--color-text);
 }
 
 .gold-divider {
@@ -206,16 +219,18 @@ h4 { font-size: 1.25rem; }
 }
 
 .section-cream {
-  background-color: var(--color-cream);
+  background-color: var(--color-brown-base);
+  color: var(--color-text);
 }
 
 .section-cream-alt {
-  background-color: var(--color-cream-alt);
+  background-color: var(--color-brown-surface);
+  color: var(--color-text);
 }
 
 .section-green {
-  background-color: var(--color-green-dark);
-  color: var(--color-text-inverse);
+  background-color: var(--color-brown-deep);
+  color: var(--color-cream);
 }
 
 .section-header {
@@ -249,45 +264,62 @@ h4 { font-size: 1.25rem; }
 }
 
 .btn-gold {
-  background-color: var(--color-gold);
-  color: #FFFFFF;
-  box-shadow: 0 4px 14px rgba(201, 150, 43, 0.35);
+  background: linear-gradient(135deg, #E6C26E 0%, #C9962B 50%, #9F7218 100%);
+  color: #0F0B08;
+  font-weight: 700;
+  box-shadow: 0 4px 16px rgba(201, 150, 43, 0.4), 0 2px 6px rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .btn-gold:hover {
-  background-color: var(--color-gold-hover);
-  color: #FFFFFF;
+  background: linear-gradient(135deg, #F0CE7E 0%, #DFB253 50%, #B8851E 100%);
+  color: #0F0B08;
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(201, 150, 43, 0.45);
+  box-shadow: 0 8px 24px rgba(201, 150, 43, 0.55), 0 0 16px rgba(223, 178, 83, 0.35);
 }
 
 .btn-green {
-  background-color: var(--color-green);
-  color: #FFFFFF;
+  background: linear-gradient(135deg, #3A2C24 0%, #251B16 100%);
+  color: var(--color-cream);
+  border: 1px solid rgba(201, 150, 43, 0.45);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
 }
 
 .btn-green:hover {
-  background-color: var(--color-green-dark);
+  background: linear-gradient(135deg, #4A382E 0%, #32241D 100%);
+  border-color: var(--color-gold);
   color: #FFFFFF;
   transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.55), 0 0 16px rgba(201, 150, 43, 0.2);
 }
 
 .btn-outline {
-  border: 1px solid var(--color-gold);
-  color: var(--color-text);
-  background: transparent;
+  border: 1.5px solid var(--color-gold-border);
+  color: var(--color-gold-light);
+  background: rgba(201, 150, 43, 0.08);
+  backdrop-filter: blur(8px);
 }
 
 .btn-outline:hover {
   background-color: var(--color-gold);
-  color: #FFFFFF;
+  color: #0F0B08;
+  border-color: var(--color-gold);
   transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(201, 150, 43, 0.45);
 }
 
 .btn-outline-white {
-  border: 1px solid rgba(251, 247, 238, 0.5);
+  border: 1.5px solid rgba(250, 244, 235, 0.55);
   color: var(--color-cream);
-  background: transparent;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(8px);
+}
+
+.btn-outline-white:hover {
+  background-color: var(--color-cream);
+  color: #1C1613;
+  border-color: var(--color-cream);
+  transform: translateY(-2px);
 }
 
 .btn-outline-white:hover {
@@ -527,12 +559,12 @@ h4 { font-size: 1.25rem; }
   left: 50%;
   transform: translateX(-50%) translateY(8px);
   min-width: 210px;
-  background: rgba(10, 38, 24, 0.95);
+  background: rgba(28, 21, 17, 0.97);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(201, 150, 43, 0.35);
+  border: 1px solid rgba(201, 150, 43, 0.4);
   border-radius: 16px;
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5), 0 0 20px rgba(201, 150, 43, 0.15);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.65), 0 0 20px rgba(201, 150, 43, 0.15);
   padding: 0.5rem;
   display: flex;
   flex-direction: column;
@@ -738,12 +770,12 @@ h4 { font-size: 1.25rem; }
   left: 1rem;
   max-width: 440px;
   margin: 0 auto;
-  background: rgba(10, 38, 24, 0.95);
+  background: linear-gradient(180deg, #241C18 0%, #16110E 100%);
   backdrop-filter: blur(28px);
   -webkit-backdrop-filter: blur(28px);
-  border: 1px solid rgba(201, 150, 43, 0.35);
+  border: 1px solid rgba(201, 150, 43, 0.4);
   border-radius: 24px;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.65), 0 0 30px rgba(201, 150, 43, 0.2);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.75), 0 0 30px rgba(201, 150, 43, 0.2);
   padding: calc(1.25rem + env(safe-area-inset-top, 0px)) 1.5rem calc(1.5rem + env(safe-area-inset-bottom, 0px));
   display: flex;
   flex-direction: column;
@@ -1021,11 +1053,24 @@ h4 { font-size: 1.25rem; }
 }
 
 .booking-bar {
-  background-color: #FFFFFF;
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-lg);
-  border: 1px solid var(--color-gold-border);
-  padding: 1.75rem 2rem;
+  background: linear-gradient(150deg, rgba(46, 36, 30, 0.95) 0%, rgba(24, 18, 15, 0.98) 100%);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-radius: 20px;
+  box-shadow: 0 25px 60px -12px rgba(0, 0, 0, 0.8), 0 0 35px rgba(201, 150, 43, 0.16), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  border: 1.5px solid rgba(201, 150, 43, 0.42);
+  padding: 2rem 2.25rem;
+  position: relative;
+}
+
+.booking-bar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 20%;
+  right: 20%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent 0%, rgba(223, 178, 83, 0.85) 50%, transparent 100%);
 }
 
 .booking-form-grid {
@@ -1038,35 +1083,108 @@ h4 { font-size: 1.25rem; }
 .form-group {
   display: flex;
   flex-direction: column;
-  gap: 0.4rem;
+  gap: 0.45rem;
 }
 
 .form-group label {
-  font-size: 0.78rem;
-  font-weight: 600;
+  font-size: 0.72rem;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--color-green-dark);
+  letter-spacing: 0.14em;
+  color: var(--color-gold-light);
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
 }
 
 .form-control {
   width: 100%;
-  padding: 0.75rem 0.9rem;
-  border: 1px solid #D8D2C5;
-  border-radius: var(--radius-sm);
-  background-color: #FAF8F3;
-  font-size: 0.92rem;
-  transition: border-color var(--transition-fast);
+  min-height: 52px;
+  height: 52px;
+  padding: 0 1.15rem;
+  border: 1.5px solid rgba(201, 150, 43, 0.32);
+  border-radius: 12px;
+  background-color: rgba(18, 14, 11, 0.85);
+  color: #FAF4EB;
+  font-size: 0.94rem;
+  transition: all var(--transition-fast);
+  box-sizing: border-box;
+}
+
+textarea.form-control {
+  min-height: 110px;
+  height: auto;
+  padding: 0.9rem 1.15rem;
+  resize: vertical;
+}
+
+.form-control::placeholder {
+  color: rgba(188, 171, 160, 0.65);
 }
 
 .form-control:focus {
-  border-color: var(--color-gold);
+  border-color: #DFB253;
   outline: none;
-  background-color: #FFFFFF;
+  background-color: rgba(28, 21, 17, 0.98);
+  box-shadow: 0 0 16px rgba(223, 178, 83, 0.38);
+  color: #FFFFFF;
 }
 
+/* Custom styled luxury select dropdowns */
+select.form-control {
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23DFB253' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1.15rem center;
+  padding-right: 2.75rem;
+  cursor: pointer;
+}
+
+select.form-control option {
+  background-color: #241C18;
+  color: #FAF4EB;
+  padding: 0.6rem;
+}
+
+/* Gold glowing calendar icon for date inputs */
+input[type="date"].form-control::-webkit-calendar-picker-indicator {
+  filter: invert(0.85) sepia(1) saturate(5) hue-rotate(5deg);
+  cursor: pointer;
+  opacity: 0.85;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+input[type="date"].form-control::-webkit-calendar-picker-indicator:hover {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+.booking-bar .btn-gold {
+  min-height: 52px;
+  height: 52px;
+  border-radius: 12px;
+  padding: 0 1.75rem;
+}
+
+/* Super Premium Reservation Dossier Card */
 .form-card {
-  padding: 3rem 2.5rem;
+  background: linear-gradient(160deg, rgba(46, 36, 30, 0.96) 0%, rgba(24, 18, 15, 0.99) 100%);
+  border: 1.5px solid rgba(201, 150, 43, 0.4);
+  border-radius: 24px;
+  padding: 3.5rem 3rem;
+  box-shadow: 0 30px 75px -10px rgba(0, 0, 0, 0.8), 0 0 40px rgba(201, 150, 43, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  position: relative;
+}
+
+.form-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 25%;
+  right: 25%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent 0%, rgba(223, 178, 83, 0.85) 50%, transparent 100%);
 }
 
 .form-row-grid {
@@ -1129,10 +1247,11 @@ h4 { font-size: 1.25rem; }
    9. Reputation / Google Rating Strip
    -------------------------------------------------------------------------- */
 .rating-strip {
-  background-color: var(--color-green-deep);
+  background-color: #15100E;
   color: var(--color-cream);
   padding: 1.4rem 0;
-  border-bottom: 1px solid rgba(201, 150, 43, 0.25);
+  border-bottom: 1px solid rgba(201, 150, 43, 0.28);
+  border-top: 1px solid rgba(201, 150, 43, 0.18);
 }
 
 .rating-inner {
@@ -1188,10 +1307,10 @@ h4 { font-size: 1.25rem; }
    10. Why Book Direct Strip
    -------------------------------------------------------------------------- */
 .perks-strip {
-  background-color: var(--color-cream-alt);
-  border-top: 1px solid var(--color-cream-dark);
-  border-bottom: 1px solid var(--color-cream-dark);
-  padding: 2.5rem 0;
+  background-color: #201915;
+  border-top: 1px solid rgba(201, 150, 43, 0.22);
+  border-bottom: 1px solid rgba(201, 150, 43, 0.22);
+  padding: 2.75rem 0;
 }
 
 .perks-grid {
@@ -1203,7 +1322,18 @@ h4 { font-size: 1.25rem; }
 .perk-card {
   display: flex;
   align-items: flex-start;
-  gap: 1rem;
+  gap: 1.15rem;
+  padding: 1.25rem;
+  background: rgba(42, 33, 27, 0.55);
+  border: 1px solid rgba(201, 150, 43, 0.22);
+  border-radius: 14px;
+  transition: all var(--transition-normal);
+}
+
+.perk-card:hover {
+  background: rgba(48, 38, 31, 0.85);
+  border-color: rgba(223, 178, 83, 0.45);
+  transform: translateY(-2px);
 }
 
 .perk-icon {
@@ -1224,6 +1354,7 @@ h4 { font-size: 1.25rem; }
   font-size: 0.95rem;
   font-weight: 600;
   margin-bottom: 0.2rem;
+  color: var(--color-cream);
 }
 
 .perk-info p {
@@ -1233,7 +1364,7 @@ h4 { font-size: 1.25rem; }
 }
 
 /* --------------------------------------------------------------------------
-   11. Cards (Rooms, Dining, Events)
+   11. Cards (Rooms, Dining, Events) — Super Premium & Luxury
    -------------------------------------------------------------------------- */
 .cards-grid {
   display: grid;
@@ -1242,11 +1373,11 @@ h4 { font-size: 1.25rem; }
 }
 
 .card {
-  background-color: #FFFFFF;
-  border-radius: var(--radius-md);
+  background: linear-gradient(165deg, rgba(46, 36, 30, 0.94) 0%, rgba(26, 20, 16, 0.98) 100%);
+  border-radius: var(--radius-lg);
   overflow: hidden;
-  box-shadow: var(--shadow-sm);
-  border: 1px solid rgba(27, 94, 59, 0.08);
+  box-shadow: 0 14px 40px -6px rgba(0, 0, 0, 0.65), 0 0 1px 1px rgba(201, 150, 43, 0.18) inset;
+  border: 1px solid rgba(201, 150, 43, 0.3);
   transition: all var(--transition-normal);
   display: flex;
   flex-direction: column;
@@ -1254,8 +1385,8 @@ h4 { font-size: 1.25rem; }
 
 .card:hover {
   transform: translateY(-6px);
-  box-shadow: var(--shadow-lg);
-  border-color: var(--color-gold-border);
+  box-shadow: 0 22px 55px -6px rgba(0, 0, 0, 0.8), 0 0 25px rgba(201, 150, 43, 0.25);
+  border-color: rgba(223, 178, 83, 0.55);
 }
 
 .card-img-wrap {
@@ -1263,7 +1394,7 @@ h4 { font-size: 1.25rem; }
   width: 100%;
   aspect-ratio: 16 / 10;
   overflow: hidden;
-  background-color: var(--color-green-dark);
+  background-color: var(--color-brown-deep);
 }
 
 .card-img {
@@ -1282,6 +1413,13 @@ h4 { font-size: 1.25rem; }
   top: 1rem;
   left: 1rem;
   z-index: 2;
+  background: rgba(28, 20, 16, 0.82);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(223, 178, 83, 0.5);
+  color: #F5DE9C;
+  font-weight: 700;
+  letter-spacing: 0.12em;
 }
 
 .card-body {
@@ -1293,6 +1431,8 @@ h4 { font-size: 1.25rem; }
 
 .card-title {
   margin-bottom: 0.65rem;
+  color: var(--color-cream);
+  font-family: var(--font-serif);
 }
 
 .card-desc {
@@ -1300,20 +1440,22 @@ h4 { font-size: 1.25rem; }
   color: var(--color-text-muted);
   margin-bottom: 1.25rem;
   flex-grow: 1;
+  line-height: 1.55;
 }
 
 .amenity-pills {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.4rem;
+  gap: 0.45rem;
   margin-bottom: 1.5rem;
 }
 
 .amenity-pill {
   font-size: 0.74rem;
-  background-color: #F5EFE3;
-  color: var(--color-green-dark);
-  padding: 0.25rem 0.6rem;
+  background-color: rgba(248, 243, 235, 0.08);
+  color: #EEDFCF;
+  border: 1px solid rgba(201, 150, 43, 0.25);
+  padding: 0.28rem 0.65rem;
   border-radius: var(--radius-full);
 }
 
@@ -1322,20 +1464,21 @@ h4 { font-size: 1.25rem; }
   align-items: center;
   justify-content: space-between;
   padding-top: 1.25rem;
-  border-top: 1px solid var(--color-cream-alt);
+  border-top: 1px solid rgba(201, 150, 43, 0.2);
 }
 
 .card-rate-label {
-  font-size: 0.76rem;
+  font-size: 0.74rem;
   text-transform: uppercase;
-  color: var(--color-text-light);
+  letter-spacing: 0.1em;
+  color: var(--color-text-muted);
   display: block;
 }
 
 .card-rate-value {
   font-weight: 700;
   font-size: 1.05rem;
-  color: var(--color-green);
+  color: var(--color-gold-light);
 }
 
 /* --------------------------------------------------------------------------
@@ -1405,9 +1548,9 @@ h4 { font-size: 1.25rem; }
   inset: 0;
   background: linear-gradient(
     90deg,
-    rgba(8, 33, 20, 0.92) 0%,
-    rgba(14, 54, 33, 0.78) 55%,
-    rgba(8, 33, 20, 0.6) 100%
+    rgba(20, 15, 12, 0.92) 0%,
+    rgba(34, 25, 20, 0.78) 55%,
+    rgba(20, 15, 12, 0.6) 100%
   );
   z-index: 2;
 }
@@ -1428,14 +1571,21 @@ h4 { font-size: 1.25rem; }
 }
 
 .testimonial-card {
-  background-color: #FFFFFF;
-  border-radius: var(--radius-md);
+  background: linear-gradient(160deg, rgba(42, 33, 27, 0.92) 0%, rgba(26, 20, 17, 0.96) 100%);
+  border-radius: var(--radius-lg);
   padding: 2.25rem 2rem;
-  box-shadow: var(--shadow-sm);
-  border: 1px solid var(--color-cream-alt);
+  box-shadow: 0 12px 35px -5px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(201, 150, 43, 0.25);
   position: relative;
   display: flex;
   flex-direction: column;
+  transition: all var(--transition-normal);
+}
+
+.testimonial-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(223, 178, 83, 0.45);
+  box-shadow: 0 18px 45px -5px rgba(0, 0, 0, 0.65), 0 0 20px rgba(201, 150, 43, 0.15);
 }
 
 .quote-mark {
@@ -1443,7 +1593,7 @@ h4 { font-size: 1.25rem; }
   font-size: 3.5rem;
   line-height: 1;
   color: var(--color-gold);
-  opacity: 0.35;
+  opacity: 0.45;
   margin-bottom: 0.5rem;
 }
 
@@ -1458,7 +1608,7 @@ h4 { font-size: 1.25rem; }
 .testimonial-author {
   font-weight: 600;
   font-size: 0.95rem;
-  color: var(--color-green-dark);
+  color: var(--color-gold-light);
 }
 
 .testimonial-context {
@@ -1470,12 +1620,12 @@ h4 { font-size: 1.25rem; }
    15. M-Pesa Deposit / Cashless Info Box
    -------------------------------------------------------------------------- */
 .mpesa-card {
-  background: linear-gradient(135deg, #0E3621 0%, #1B5E3B 100%);
+  background: linear-gradient(145deg, #2D221C 0%, #1A1310 100%);
   color: var(--color-cream);
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-lg);
   padding: 2.25rem;
-  border: 1px solid rgba(201, 150, 43, 0.4);
-  box-shadow: var(--shadow-lg);
+  border: 1.5px solid rgba(201, 150, 43, 0.4);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
   margin: 2.5rem 0;
 }
 
@@ -1536,17 +1686,18 @@ h4 { font-size: 1.25rem; }
   border-radius: var(--radius-full);
   font-size: 0.85rem;
   font-weight: 500;
-  background-color: #FFFFFF;
-  border: 1px solid var(--color-cream-dark);
-  color: var(--color-text);
+  background-color: rgba(42, 33, 27, 0.75);
+  border: 1px solid rgba(201, 150, 43, 0.3);
+  color: var(--color-cream);
   transition: all var(--transition-fast);
 }
 
 .gallery-filter-btn:hover,
 .gallery-filter-btn.active {
-  background-color: var(--color-gold);
-  color: #FFFFFF;
+  background: linear-gradient(135deg, #E6C26E 0%, #C9962B 100%);
+  color: #0F0B08;
   border-color: var(--color-gold);
+  box-shadow: 0 4px 14px rgba(201, 150, 43, 0.4);
 }
 
 .gallery-grid {
@@ -1562,7 +1713,8 @@ h4 { font-size: 1.25rem; }
   overflow: hidden;
   cursor: pointer;
   box-shadow: var(--shadow-sm);
-  background-color: var(--color-green-dark);
+  background-color: var(--color-brown-deep);
+  border: 1px solid rgba(201, 150, 43, 0.2);
 }
 
 .gallery-thumb {
@@ -1575,7 +1727,7 @@ h4 { font-size: 1.25rem; }
 .gallery-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(14, 54, 33, 0.7);
+  background: rgba(22, 16, 13, 0.78);
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -1599,7 +1751,7 @@ h4 { font-size: 1.25rem; }
 .lightbox-modal {
   position: fixed;
   inset: 0;
-  background-color: rgba(6, 22, 13, 0.95);
+  background-color: rgba(18, 13, 11, 0.96);
   backdrop-filter: blur(10px);
   z-index: 2000;
   display: none;
@@ -1683,19 +1835,19 @@ h4 { font-size: 1.25rem; }
    17. Dining Menu Display (Tabbed or Sectioned)
    -------------------------------------------------------------------------- */
 .menu-category-card {
-  background-color: #FFFFFF;
-  border-radius: var(--radius-md);
+  background: linear-gradient(160deg, rgba(42, 33, 27, 0.94) 0%, rgba(26, 20, 17, 0.98) 100%);
+  border-radius: var(--radius-lg);
   padding: 2.5rem;
   margin-bottom: 2.5rem;
-  border: 1px solid var(--color-cream-alt);
-  box-shadow: var(--shadow-sm);
+  border: 1px solid rgba(201, 150, 43, 0.28);
+  box-shadow: 0 14px 40px -6px rgba(0, 0, 0, 0.55);
 }
 
 .menu-category-title {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
-  border-bottom: 2px solid var(--color-gold-tint);
+  border-bottom: 2px solid rgba(201, 150, 43, 0.35);
   padding-bottom: 0.75rem;
   margin-bottom: 1.75rem;
 }
@@ -1705,7 +1857,7 @@ h4 { font-size: 1.25rem; }
   justify-content: space-between;
   align-items: baseline;
   padding: 1rem 0;
-  border-bottom: 1px dashed var(--color-cream-dark);
+  border-bottom: 1px dashed rgba(201, 150, 43, 0.22);
 }
 
 .menu-item-row:last-child {
@@ -1714,7 +1866,7 @@ h4 { font-size: 1.25rem; }
 
 .menu-item-info h4 {
   font-size: 1.1rem;
-  color: var(--color-text);
+  color: var(--color-cream);
   margin-bottom: 0.25rem;
 }
 
@@ -1725,9 +1877,9 @@ h4 { font-size: 1.25rem; }
 }
 
 .menu-item-price {
-  font-weight: 600;
-  font-size: 0.92rem;
-  color: var(--color-green);
+  font-weight: 700;
+  font-size: 0.96rem;
+  color: var(--color-gold-light);
   white-space: nowrap;
   margin-left: 1.5rem;
 }
@@ -1742,11 +1894,11 @@ h4 { font-size: 1.25rem; }
 }
 
 .contact-card {
-  background-color: #FFFFFF;
-  border-radius: var(--radius-md);
+  background: linear-gradient(160deg, rgba(42, 33, 27, 0.94) 0%, rgba(26, 20, 17, 0.98) 100%);
+  border-radius: var(--radius-lg);
   padding: 2.5rem;
-  border: 1px solid var(--color-cream-alt);
-  box-shadow: var(--shadow-sm);
+  border: 1px solid rgba(201, 150, 43, 0.28);
+  box-shadow: 0 14px 40px -6px rgba(0, 0, 0, 0.55);
 }
 
 .contact-detail-row {
@@ -1776,11 +1928,17 @@ h4 { font-size: 1.25rem; }
 }
 
 .faq-item {
-  background-color: #FFFFFF;
+  background: rgba(38, 29, 24, 0.75);
   border-radius: var(--radius-md);
-  border: 1px solid var(--color-cream-alt);
+  border: 1px solid rgba(201, 150, 43, 0.22);
   overflow: hidden;
-  transition: border-color var(--transition-fast);
+  transition: all var(--transition-fast);
+}
+
+.faq-item:hover,
+.faq-item.open {
+  border-color: rgba(223, 178, 83, 0.45);
+  background: rgba(46, 36, 30, 0.92);
 }
 
 .faq-question-btn {
@@ -1792,7 +1950,7 @@ h4 { font-size: 1.25rem; }
   justify-content: space-between;
   font-weight: 600;
   font-size: 1.05rem;
-  color: var(--color-text);
+  color: var(--color-cream);
 }
 
 .faq-icon-arrow {
@@ -1838,7 +1996,7 @@ h4 { font-size: 1.25rem; }
    20. Footer
    -------------------------------------------------------------------------- */
 .site-footer {
-  background-color: var(--color-green-deep);
+  background-color: #120D0B;
   color: var(--color-cream);
   padding-top: 5rem;
   padding-bottom: 2rem;
@@ -1962,10 +2120,10 @@ h4 { font-size: 1.25rem; }
   bottom: 0;
   left: 0;
   width: 100%;
-  background: rgba(8, 33, 20, 0.94);
+  background: rgba(22, 16, 13, 0.96);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border-top: 1px solid rgba(201, 150, 43, 0.3);
+  border-top: 1px solid rgba(201, 150, 43, 0.35);
   z-index: 1001;
   padding: 0.5rem 0.85rem calc(0.5rem + env(safe-area-inset-bottom, 0px));
   box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.4);
@@ -2105,7 +2263,7 @@ h4 { font-size: 1.25rem; }
     right: 0;
     width: 100%;
     z-index: 1001;
-    background: rgba(8, 33, 20, 0.96);
+    background: rgba(22, 16, 13, 0.96);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
     border-top: 1px solid rgba(201, 150, 43, 0.35);
