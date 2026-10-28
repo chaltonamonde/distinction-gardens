@@ -1859,45 +1859,60 @@ h4 { font-size: 1.25rem; }
   fill: currentColor;
 }
 
-/* Mobile Sticky Bar */
+/* --------------------------------------------------------------------------
+   21. Mobile Bottom Action Bar (Frosted Glass, Safe-Area Aware)
+   -------------------------------------------------------------------------- */
 .mobile-action-bar {
   display: none;
   position: fixed;
   bottom: 0;
   left: 0;
   width: 100%;
-  background-color: var(--color-green-deep);
-  border-top: 1px solid var(--color-gold);
+  background: rgba(8, 33, 20, 0.94);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-top: 1px solid rgba(201, 150, 43, 0.3);
   z-index: 1001;
-  padding: 0.6rem 1rem;
+  padding: 0.5rem 0.85rem calc(0.5rem + env(safe-area-inset-bottom, 0px));
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.4);
 }
 
 .mobile-action-inner {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 0.75rem;
+  gap: 0.55rem;
 }
 
 .mobile-action-btn {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.45rem;
-  padding: 0.65rem;
-  font-size: 0.85rem;
+  gap: 0.4rem;
+  height: 40px;
+  padding: 0 0.65rem;
+  font-size: 0.75rem;
   font-weight: 600;
-  border-radius: var(--radius-sm);
+  border-radius: 9999px;
   text-transform: uppercase;
+  letter-spacing: 0.04em;
+  transition: transform 0.15s ease, opacity 0.15s ease;
+}
+
+.mobile-action-btn:active {
+  transform: scale(0.96);
 }
 
 .mobile-call-btn {
-  background-color: rgba(255,255,255,0.15);
+  background-color: rgba(255, 255, 255, 0.12);
   color: var(--color-cream);
+  border: 1px solid rgba(255, 255, 255, 0.25);
 }
 
 .mobile-wa-btn {
-  background-color: #25D366;
+  background: linear-gradient(135deg, #25D366, #128C7E);
   color: #FFFFFF;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 2px 10px rgba(37, 211, 102, 0.35);
 }
 
 /* --------------------------------------------------------------------------
@@ -1915,7 +1930,7 @@ h4 { font-size: 1.25rem; }
 }
 
 /* --------------------------------------------------------------------------
-   23. Responsive Breakpoints
+   23. Comprehensive Responsive Breakpoints & Mobile Phone Optimization
    -------------------------------------------------------------------------- */
 @media (max-width: 1080px) {
   .header-phone-link {
@@ -1930,12 +1945,26 @@ h4 { font-size: 1.25rem; }
   }
 }
 
+@media (max-width: 1024px) {
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+  .split-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .booking-form-grid {
+    grid-template-columns: repeat(2, 1fr) auto;
+  }
+}
+
 @media (max-width: 920px) {
   :root {
-    --nav-top-margin: 10px;
-    --nav-height: 56px;
-    --nav-height-scrolled: 52px;
-    --header-height: 72px;
+    --nav-top-margin: 8px;
+    --nav-height: 52px;
+    --nav-height-scrolled: 48px;
+    --header-height: 64px;
   }
   .nav-menu {
     display: none;
@@ -1944,75 +1973,585 @@ h4 { font-size: 1.25rem; }
     display: flex;
   }
   .nav-glass-bar {
-    padding: 0 0.85rem 0 0.75rem;
+    padding: 0 0.75rem 0 0.65rem;
   }
   .brand-tagline {
     display: none;
   }
   .btn-nav-cta {
-    padding: 0.45rem 0.95rem;
-    font-size: 0.76rem;
+    padding: 0.4rem 0.85rem;
+    font-size: 0.74rem;
   }
 }
 
-@media (max-width: 480px) {
-  .site-header {
-    padding: 8px 0.5rem 0;
+/* ==========================================================================
+   Phone Display Screen Optimization (Max Width: 768px)
+   All elements minimized, proportioned, and fitted to phone viewports
+   ========================================================================== */
+@media (max-width: 768px) {
+  :root {
+    --nav-top-margin: 8px;
+    --nav-height: 48px;
+    --nav-height-scrolled: 44px;
+    --header-height: 58px;
   }
-  .brand-symbol {
-    width: 34px;
-    height: 34px;
-    font-size: 1.1rem;
+
+  /* Reserved bottom space for fixed action bar */
+  body {
+    padding-bottom: calc(56px + env(safe-area-inset-bottom, 0px));
   }
-  .brand-name {
-    font-size: 1.1rem;
+
+  /* Activate compact bottom action bar */
+  .mobile-action-bar {
+    display: block;
   }
-  .btn-nav-cta {
-    padding: 0.38rem 0.75rem;
+
+  /* Hide floating WhatsApp button on mobile to prevent overlapping bottom bar & forms */
+  .floating-whatsapp {
+    display: none !important;
+  }
+
+  /* Container padding minimized for phone view */
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  /* Global section padding minimized from 6rem down to 2.75rem */
+  section {
+    padding: 2.75rem 0;
+  }
+
+  .section-header {
+    margin-bottom: 1.5rem;
+  }
+
+  .section-title {
+    font-size: clamp(1.55rem, 6vw, 1.95rem);
+    line-height: 1.2;
+    margin-bottom: 0.4rem;
+  }
+
+  .subheading {
     font-size: 0.72rem;
+    letter-spacing: 0.15em;
+    margin-bottom: 0.3rem;
+  }
+
+  .lead-text {
+    font-size: 0.92rem;
+    line-height: 1.5;
+  }
+
+  /* Fix anchor scroll margin for compact mobile bar */
+  [id] {
+    scroll-margin-top: calc(var(--nav-height) + var(--nav-top-margin) + 12px);
+  }
+
+  /* Minimized Floating Glass Navbar */
+  .site-header {
+    padding: var(--nav-top-margin) 0.6rem 0;
+  }
+
+  .nav-glass-bar {
+    height: var(--nav-height);
+    padding: 0 0.65rem;
+    border-radius: 9999px;
+  }
+
+  .brand-symbol {
+    width: 32px;
+    height: 32px;
+    font-size: 1.05rem;
+  }
+
+  .brand-name {
+    font-size: 1.05rem;
+  }
+
+  .brand-tagline {
+    display: none !important;
+  }
+
+  .header-cta {
+    gap: 0.4rem;
+  }
+
+  .btn-nav-cta {
+    padding: 0.35rem 0.7rem;
+    font-size: 0.7rem;
     letter-spacing: 0.04em;
   }
+
   .menu-toggle {
     width: 36px;
     height: 36px;
   }
-}
 
-@media (max-width: 1024px) {
-  .footer-grid {
-    grid-template-columns: 1fr 1fr;
-    gap: 2.5rem;
+  .hamburger-box {
+    width: 16px;
+    height: 11px;
   }
-  .split-grid {
-    grid-template-columns: 1fr;
-    gap: 2.5rem;
-  }
-}
 
-@media (max-width: 768px) {
-  .mobile-action-bar {
-    display: block;
+  /* Minimized Hero Section */
+  .hero {
+    min-height: 80vh;
+    padding-top: calc(var(--header-height) + 0.75rem);
+    padding-bottom: 3.5rem;
   }
-  .floating-whatsapp {
-    bottom: 5.5rem;
-    right: 1.25rem;
-    width: 52px;
-    height: 52px;
+
+  .hero-inner-page {
+    min-height: 42vh;
+    max-height: 320px;
+    padding-top: 65px;
   }
+
+  .hero-content {
+    padding: 0.75rem 0.5rem;
+  }
+
+  .hero-title {
+    font-size: clamp(1.85rem, 7vw, 2.35rem);
+    line-height: 1.15;
+    margin-bottom: 0.75rem;
+  }
+
+  .hero-description {
+    font-size: 0.9rem;
+    line-height: 1.48;
+    margin-bottom: 1.35rem;
+    padding: 0 0.25rem;
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    width: 100%;
+  }
+
+  .hero-actions .btn {
+    flex: 1;
+    max-width: 170px;
+    padding: 0.58rem 0.85rem;
+    font-size: 0.76rem;
+    letter-spacing: 0.04em;
+    text-align: center;
+    white-space: nowrap;
+  }
+
+  .hero-slide-indicators {
+    bottom: 1.25rem;
+    gap: 0.45rem;
+  }
+
+  .slide-dot {
+    width: 7px;
+    height: 7px;
+  }
+
+  .slide-dot.active {
+    width: 20px;
+  }
+
+  /* Minimized & Compact Booking Bar */
   .booking-bar-wrapper {
-    margin-top: -2rem;
+    margin-top: -2.5rem;
+    margin-bottom: 0.75rem;
   }
+
+  .booking-bar {
+    padding: 1.15rem 0.9rem;
+    border-radius: 14px;
+    box-shadow: 0 8px 24px rgba(8, 33, 20, 0.12);
+  }
+
+  .booking-form-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.65rem;
+  }
+
+  .booking-form-grid .form-group:nth-child(5),
+  .booking-form-grid > button,
+  .booking-form-grid > .btn,
+  .booking-form-grid > [type="submit"] {
+    grid-column: 1 / -1;
+    margin-top: 0.25rem;
+  }
+
+  .form-group label {
+    font-size: 0.68rem;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.2rem;
+  }
+
+  .form-control {
+    padding: 0.48rem 0.65rem;
+    font-size: 0.82rem;
+    height: 38px;
+    border-radius: 6px;
+  }
+
+  .booking-bar .btn,
+  .btn-gold {
+    padding: 0.65rem 1rem;
+    font-size: 0.82rem;
+    height: 42px;
+  }
+
+  /* Minimized Rating & Trust Strip */
+  .rating-strip {
+    padding: 0.85rem 0;
+  }
+
+  .rating-inner {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.65rem;
+  }
+
+  .rating-badge {
+    gap: 0.5rem;
+    font-size: 0.85rem;
+  }
+
+  .stars {
+    font-size: 0.95rem;
+    letter-spacing: 1px;
+  }
+
+  .trust-badges-inline {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem 0.9rem;
+    font-size: 0.75rem;
+  }
+
+  /* Minimized Perks Strip (Why Book Direct) */
+  .perks-strip {
+    padding: 1.65rem 0;
+  }
+
+  .perks-grid {
+    grid-template-columns: 1fr;
+    gap: 0.85rem;
+  }
+
+  .perk-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.65rem;
+  }
+
+  .perk-icon {
+    width: 36px;
+    height: 36px;
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+
+  .perk-text h4 {
+    font-size: 0.92rem;
+    margin-bottom: 0.15rem;
+  }
+
+  .perk-text p {
+    font-size: 0.8rem;
+    line-height: 1.45;
+  }
+
+  /* Minimized Feature Cards */
+  .features-grid {
+    grid-template-columns: 1fr;
+    gap: 0.85rem;
+  }
+
+  .feature-card {
+    padding: 1.15rem 0.95rem;
+    border-radius: 12px;
+  }
+
+  .feature-icon {
+    width: 42px;
+    height: 42px;
+    margin-bottom: 0.65rem;
+    font-size: 1.2rem;
+  }
+
+  .feature-card h3 {
+    font-size: 1.15rem;
+    margin-bottom: 0.35rem;
+  }
+
+  .feature-card p {
+    font-size: 0.84rem;
+    line-height: 1.5;
+  }
+
+  /* Minimized Rooms Section */
+  .rooms-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .room-card {
+    border-radius: 14px;
+    overflow: hidden;
+  }
+
+  .room-card-img-wrap {
+    height: 190px;
+  }
+
+  .room-card-body {
+    padding: 1.15rem 0.95rem;
+  }
+
+  .room-title {
+    font-size: 1.25rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .room-desc {
+    font-size: 0.84rem;
+    line-height: 1.5;
+    margin-bottom: 0.65rem;
+  }
+
+  .room-features-list {
+    gap: 0.3rem;
+    margin-bottom: 0.85rem;
+  }
+
+  .room-feature-tag {
+    font-size: 0.68rem;
+    padding: 0.22rem 0.45rem;
+    border-radius: 6px;
+  }
+
+  .room-card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 0.65rem;
+    border-top: 1px solid var(--color-cream-dark);
+  }
+
+  .room-price {
+    font-size: 1.18rem;
+  }
+
+  .room-price small {
+    font-size: 0.72rem;
+  }
+
+  .room-card-footer .btn {
+    padding: 0.45rem 0.85rem;
+    font-size: 0.76rem;
+  }
+
+  /* Minimized Dining & Events Cards */
+  .dining-grid,
+  .split-grid,
+  .events-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .dining-card,
+  .event-card {
+    border-radius: 14px;
+    overflow: hidden;
+  }
+
+  .dining-card-img-wrap,
+  .event-card-img-wrap {
+    height: 180px;
+  }
+
+  .dining-card-body,
+  .event-card-body {
+    padding: 1.15rem 0.95rem;
+  }
+
+  .dining-card h3,
+  .event-card h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.35rem;
+  }
+
+  .dining-card p,
+  .event-card p {
+    font-size: 0.84rem;
+    line-height: 1.5;
+  }
+
+  /* Minimized Testimonials */
+  .testimonials-grid {
+    grid-template-columns: 1fr;
+    gap: 0.85rem;
+  }
+
+  .testimonial-card {
+    padding: 1.15rem 0.95rem;
+    border-radius: 12px;
+  }
+
+  .testimonial-card blockquote {
+    font-size: 0.88rem;
+    line-height: 1.5;
+    margin-bottom: 0.65rem;
+  }
+
+  .guest-meta {
+    font-size: 0.78rem;
+  }
+
+  /* Minimized FAQ Accordion */
+  .faq-list {
+    max-width: 100%;
+  }
+
+  .faq-item {
+    border-radius: 10px;
+    margin-bottom: 0.55rem;
+  }
+
+  .faq-question {
+    padding: 0.85rem 1rem;
+    font-size: 0.88rem;
+  }
+
+  .faq-answer-panel {
+    padding: 0 1rem 0.85rem;
+    font-size: 0.82rem;
+    line-height: 1.5;
+  }
+
+  /* Minimized 2-Column Gallery Grid */
+  .gallery-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.45rem;
+  }
+
+  .gallery-item {
+    height: 135px;
+    border-radius: 8px;
+  }
+
+  /* Minimized Contact Section & Forms */
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .contact-card {
+    padding: 1.15rem 0.95rem;
+    border-radius: 12px;
+  }
+
+  .contact-card h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .contact-info-list {
+    gap: 0.65rem;
+    font-size: 0.84rem;
+  }
+
+  .map-container {
+    height: 220px;
+    border-radius: 10px;
+  }
+
+  /* Minimized Footer */
+  .site-footer {
+    padding-top: 2.25rem;
+    padding-bottom: 2rem;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 1.35rem;
+    margin-bottom: 1.75rem;
+  }
+
+  .footer-col h4 {
+    font-size: 0.98rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .footer-links {
+    gap: 0.35rem;
+    font-size: 0.82rem;
+  }
+
+  .footer-col p {
+    font-size: 0.82rem;
+    line-height: 1.5;
+  }
+
+  .footer-bottom {
+    font-size: 0.74rem;
+    padding-top: 1rem;
+  }
+}
+
+/* ==========================================================================
+   Ultra-Compact Phone Screen Tweaks (Max Width: 420px & down to 320px)
+   ========================================================================== */
+@media (max-width: 420px) {
+  .site-header {
+    padding: 6px 0.45rem 0;
+  }
+
+  .nav-glass-bar {
+    height: 46px;
+    padding: 0 0.5rem;
+  }
+
+  .brand-symbol {
+    width: 28px;
+    height: 28px;
+    font-size: 0.95rem;
+  }
+
+  .brand-name {
+    font-size: 0.98rem;
+  }
+
+  .btn-nav-cta {
+    padding: 0.32rem 0.6rem;
+    font-size: 0.68rem;
+    letter-spacing: 0.02em;
+  }
+
+  .menu-toggle {
+    width: 32px;
+    height: 32px;
+  }
+
+  .hero-title {
+    font-size: 1.75rem;
+  }
+
+  .hero-actions .btn {
+    padding: 0.52rem 0.65rem;
+    font-size: 0.72rem;
+  }
+
   .booking-form-grid {
     grid-template-columns: 1fr;
   }
-  .contact-grid {
-    grid-template-columns: 1fr;
-  }
-  .footer-grid {
-    grid-template-columns: 1fr;
-  }
-  body {
-    padding-bottom: 60px; /* Space for mobile sticky action bar */
+
+  .mobile-action-btn {
+    font-size: 0.7rem;
+    height: 38px;
   }
 }
 
